@@ -1,0 +1,40 @@
+* { margin: 0; padding: 0; }
+body { background-color: #eee; }
+
+#header {
+  width: 100%;
+  height: 56px;
+  background-position: center;
+  background: url('src/headerTrans2.png') no-repeat center, linear-gradient(90deg, #dddddd, #dddddd 49.9%, #f5a320 50.1%) no-repeat;
+  text-align: center;
+}
+.wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: inherit;
+  width: inherit;
+  text-align: left;
+}
+.seprote {
+  margin: auto 0;
+  height: 95%;
+  display: inline-block;
+}
+.iutCB {
+  margin: auto 0;
+  height: 95%;
+  display: inline-block;
+}
+
+#menuBar {
+  height: 50px;
+}
+
+#content {
+  height: 530px;
+}
+
+footer {
+  height: 57px;
+}
