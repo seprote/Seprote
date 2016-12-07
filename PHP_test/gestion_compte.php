@@ -135,7 +135,12 @@ require_once "BDD.php";
 								<td><input type='text' name='nom' id="nom"></td>
 								<td><input type='text' name='prenom' id="prenom"></td>
 								<td><input type='text' name='mail' id="mail"></td>
-								<td><input type='text' name='id_role' id="role"></td>
+								<td><select name='id_role'>
+										<option value="1">Administrateur</option>
+										<option value="2">Gestionnaire</option>
+										<option value="3">Utilisateur</option>
+									</select>								
+								</td>
 								<td><input type='text' name='mdp' id="mdp"></td>
 								<td><input type='submit' value='Créer' id="ajout">
 								<input type='hidden' name='type_form' value='1'></td>
