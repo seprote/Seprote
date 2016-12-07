@@ -20,16 +20,7 @@
 			<img class="iut" src="src/iut.png" alt="IUT Calais Boulogne"/>
 			<img class="iutCB" src="src/iutCB.png" alt="IUT Calais Boulogne"/>
 		</div>
-	<?php
-
-	require_once "BDD.php";
-	
-	var_dump($_SESSION);
-	
-	if(!isset($_SESSION['id']) || !isset($_SESSION['nom']) || !isset($_SESSION['prenom']) || !isset($_SESSION['role'])){
-		if(empty($_POST['login']) || empty($_POST['mdp'])){
-					?>
-				
+		
 			<form method="POST" action="login.php" id="loginForm">
 				<label>Nom d'utilisateur</label>
 				<input type="text" name="login"/>
@@ -39,16 +30,20 @@
 				<br/><br/><br/>
 				<button type="input">Connexion</button>
 			</form>
-		<?php
-			
+	<?php
+
+	require_once "BDD.php";
+	
+	if(!isset($_SESSION['id']) || !isset($_SESSION['nom']) || !isset($_SESSION['prenom']) || !isset($_SESSION['role'])){
+		if(empty($_POST['login']) || empty($_POST['mdp'])){
 				if(isset($_POST['login']) || isset($_POST['mdp'])) 
 				{
 					?>
 					<div class="ui-widget">
-						<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+						<div class="ui-state-error ui-corner-all"> 
 							<p>
 								<span class="ui-icon ui-icon-alert" 
-									style="margin-right: .3em;"></span>
+									style="margin-right: .3em;">⚠</span>
 								<strong>ERREUR: </strong> L'un des 2 champs est vide !
 							</p>
 						</div>
@@ -68,10 +63,10 @@
 			if(!$resultat){ 
 			?>
 				<div class="ui-widget">
-					<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+					<div class="ui-state-error ui-corner-all"> 
 						<p>
 							<span class="ui-icon ui-icon-alert" 
-								style="margin-right: .3em;"></span>
+								style="margin-right: .3em;">⚠</span>
 							<strong>ERREUR: </strong> Login ou mot de passe incorrect !
 						</p>
 					</div>
