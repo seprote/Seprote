@@ -1,6 +1,6 @@
 <div id="menuBar">
 		<ul>
-			<li><a class="itemName" href="#">Acceuil</a></li>
+			<li><a class="itemName" href="index.php">Acceuil</a></li>
 			<?php if($_SESSION['role'] < 3){ ?>
 				<li><a class="itemName" href="#">Gestion d'heures</a></li>
 				<li><a class="itemName" href="#">Modification du PPN</a></li>
