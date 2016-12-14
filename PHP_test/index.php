@@ -1,11 +1,12 @@
 <?php session_start(); ?>
+<!doctype html>
 <html>
 <head>
 	<meta charset="utf-8"/>
 	<title>Seprote IUT Calais Boulogne</title>
 	
 	<link href='https://fonts.googleapis.com/css?family=Product+Sans:400,400i,700,700i' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="style.css" type="text/css"></link>
+	<link rel="stylesheet" href="style.css" type="text/css">
 	
 	<!-- loading google chart library -->
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -28,17 +29,19 @@
 	
 	<div id="menuBar">
 		<ul>
-			<li><a class="itemName" href="index.html">Acceuil</a></li>
-			<li><a class="itemName" href="index.html">Gestion d'heures</a></li>
-			<li><a class="itemName" href="index.html">Modification du PPN</a></li>
-			<li><a class="itemName" href="index.html">Gestion de professeur</a></li>
+			<li><a class="itemName" href="#">Acceuil</a></li>
+			<?php if($_SESSION['role'] < 3){ ?>
+				<li><a class="itemName" href="#">Gestion d'heures</a></li>
+				<li><a class="itemName" href="#">Modification du PPN</a></li>
+				<li><a class="itemName" href="gestion_compte.php">Gestion de professeur</a></li>
+			<?php } ?>
 			<li><a class="itemName" href="logout.php">Déconnexion</a></li>
 		</ul>
 	</div>
 	
 	<div id="main">
 		<div class="mainWrap">
-			<h1 class="bonjour">Bonjour, <?php echo $_SESSION['nom']. " " . $_SESSION['prenom'] ?>.</h1>
+			<h1 class="bonjour">Bonjour, <?= htmlspecialchars($_SESSION['nom']). " " . htmlspecialchars($_SESSION['prenom']) ?>.</h1>
 			
 			<div id="content">
 				<div id="left">
@@ -62,7 +65,7 @@
 	<?php
 	}
 	
-	else header('Location: error404.php');
+	else header('Location: login.php');
 	?>
 	<footer>
 		<a class="aPropos" href="" onclick="alert('projet par:\nEl Yazid Benbella\nClouet Anthony\nLenglet Anthony\nDoyer Nicolas')">A propos</a>

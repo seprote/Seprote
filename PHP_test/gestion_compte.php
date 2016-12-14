@@ -6,49 +6,58 @@ require_once "BDD.php";
 /************ TRAITEMENT FORMULAIRE ************/
 
 	if(isset($_POST['type_form'])){
-
+	
+	
 
 		if($_POST['type_form'] == 1){ // Traitement du formulaire d'ajout de compte
 	
-			$req_ajout = $bdd->prepare("INSERT INTO utilisateur(nom,prenom,mail,id_role,mdp) VALUES(:nom,:prenom,:mail,:id_role,:mdp)");
-			$req_ajout->execute(array(
-				'nom' => $_POST['nom'], 
-				'prenom' => $_POST['prenom'], 
-				'mail' => $_POST['mail'],
-				'id_role' => $_POST['id_role'],
-				'mdp' => sha1($_POST['mdp'])
-			));
-			header('Location: gestion_compte.php');
+			/********* VERIFICATION DES DONNEES *********/
+			if($_POST['id_role'] != 1 && $_POST['id_role'] != 2 && $_POST['id_role'] != 3){
 
-		}
+					$ERROR = "Id du rôle incorrect !";
+				
+			}	
+
+			else if(!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)){
+
+					$ERROR = "Adresse mail incorrecte !";
+			}
+
+			
+			else if(strlen($_POST['mdp']) < 6){
+
+					$ERROR = "Mot de passe trop court !";
+			}
+				
+			/********** REQUETE A EFFECTUER **************/	
+			
+			else{
+				$req_ajout = $bdd->prepare("INSERT INTO utilisateur(nom,prenom,mail,id_role,mdp) VALUES(:nom,:prenom,:mail,:id_role,:mdp)");
+				$req_ajout->execute(array(
+					'nom' => $_POST['nom'], 
+					'prenom' => $_POST['prenom'], 
+					'mail' => $_POST['mail'],
+					'id_role' => $_POST['id_role'],
+					'mdp' => sha1($_POST['mdp'])
+				));
+				header('Location: gestion_compte.php');
+
+				if(!$req_ajout){
+
+				}
+				
+			}
+		}	
 
 		if($_POST['type_form'] == 1){
 
 		}
 
 	}
-?>
 
-<!doctype html>
-<html>
-<head>
-	<meta charset="utf-8"/>
-	<title>Seprote IUT Calais Boulogne</title>
-	
-	<link href='https://fonts.googleapis.com/css?family=Product+Sans:400,400i,700,700i' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="style.css" type="text/css">
-	
-	<!-- loading google chart library -->
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	include('header.php');
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script type="text/javascript" src="jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-
-	<script src="script.js"></script>
-</head>
-<body>
-	<?php
-		if(!empty($_SESSION['id'])){ // On est connecter
+		if(!empty($_SESSION['id'])){ // On est connecté
 	?>
 	<div id="header">
 		<div class="wrap">
@@ -57,17 +66,7 @@ require_once "BDD.php";
 		<img class="iutCB" src="src/iutCB.png" alt="IUT Calais Boulogne"/>
 	</div>
 	
-	<div id="menuBar">
-		<ul>
-			<li><a class="itemName" href="#">Acceuil</a></li>
-			<?php if($_SESSION['role'] < 3){ ?>
-				<li><a class="itemName" href="#">Gestion d'heures</a></li>
-				<li><a class="itemName" href="#">Modification du PPN</a></li>
-				<li><a class="itemName" href="gestion_compte.php">Gestion de professeur</a></li>
-			<?php } ?>
-			<li><a class="itemName" href="logout.php">Déconnexion</a></li>
-		</ul>
-	</div>
+	<?php include('menu.php'); ?>
 	
 	<div id="main">
 		<div class="mainWrap">
@@ -141,13 +140,26 @@ require_once "BDD.php";
 										<option value="3">Utilisateur</option>
 									</select>								
 								</td>
-								<td><input type='text' name='mdp' id="mdp"></td>
+								<td><input type='password' name='mdp' id="mdp"></td>
 								<td><input type='submit' value='Créer' id="ajout">
 								<input type='hidden' name='type_form' value='1'></td>
 							</tr>
 						</table>
 					</form>	
 			
+					<?php if($ERROR) { ?>
+			
+					<div class="ui-widget">
+						<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+							<p>
+								<span class="ui-icon ui-icon-alert" 
+									style="margin-right: .3em;"></span>
+								<strong>ERREUR: </strong> <?php echo $ERROR ?>
+							</p>
+						</div>
+					</div>
+
+					<?php } ?>
 					
 			</div>
 		</div>
@@ -156,11 +168,6 @@ require_once "BDD.php";
 	}
 	
 	else header('Location: login.php');
+
+	include('footer.php');
 	?>
-	<footer>
-		<a class="aPropos" href="" onclick="alert('projet par:\nEl Yazid Benbella\nClouet Anthony\nLenglet Anthony\nDoyer Nicolas')">A propos</a>
-		<span class="separator">|</span>
-		<span>©Seprote 2016</span>
-	</footer>
-</body>
-</html>

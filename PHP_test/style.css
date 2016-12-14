@@ -11,9 +11,6 @@ body>div {
   height: 100%;
 }
 
-.erreur404 { text-align: center; font-size: 50px; display: table-cell; vertical-align: middle; }
-.erreur404 .subtext { font-size: 50px; line-height: 25px; }
-
 #header {
   width: 100%;
   height: 56px;
