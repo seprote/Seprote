@@ -93,7 +93,109 @@ body>div {
   vertical-align: middle;
 }
 #chart { display: inline-block; margin-bottom: 10px; }
-.tabBtn, .pieBtn, .barBtn, .calendar { display: table-cell; }
+.tabBtn, .pieBtn, .barBtn { display: table-cell; }
+
+
+
+ul {list-style-type: none;}
+body {font-family: Verdana, sans-serif;}
+
+
+.calendar { width: 90%; }
+
+/* Year header */
+.Year {
+    padding: 70px 25px;
+    background: #1abc9c;
+}
+
+/* Year list */
+.Year ul {
+    margin: 0;
+    padding: 0;
+}
+
+.Year ul li {
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+/* Previous button inside year header */
+.Year .prev {
+    float: left;
+    padding-top: 10px;
+}
+
+/* Next button */
+.Year .next {
+    float: right;
+    padding-top: 10px;
+}
+
+/* Months (January-December) */
+.Months {
+    margin: 0;
+    padding: 10px 0;
+    background-color:#ddd;
+}
+
+.Months li {
+    display: inline-block;
+    width: 7%;
+	font-size:10px;
+    color: #666;
+    text-align: center;
+}
+
+/* Weeks (1-53) */
+.Week {
+    padding: 10px 0;
+    background: #eee;
+    margin: 0;
+}
+
+.Week li {
+    list-style-type: none;
+    display: inline-block;
+    width: 7%;
+    text-align: center;
+    margin-bottom: 5px;
+    font-size:10px;
+    color:#777;
+}
+
+/* Highlight the "current" week */
+.Week li .active {
+    padding: 5px;
+    background: #1abc9c;
+    color: white !important
+}
+
+
+/*manage accounts*/
+.accInput {
+  width: 60%;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid #666;
+  padding: 10px 0;
+}
+.accInput input {
+  margin: 0 5px;
+}
+.submitBtn {
+  padding: 3px 7px;
+}
+
+/* ListeComptes */
+#ListeComptes.tablesorter {
+    margin: 20px auto 0 auto;
+    font-size: 8pt;
+    width: 60%;
+}
+
 /*END MAIN*/
 
 footer {

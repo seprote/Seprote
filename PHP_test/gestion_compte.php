@@ -75,8 +75,24 @@ require_once "BDD.php";
 					
 					$req_compte = $bdd->query("SELECT id_u,nom,prenom,mail,id_role FROM utilisateur"); 
 				?>
+				<div class="accInput">
+					<form action="#" method="POST">
+						<input name="nom" placeholder="nom" type="text">
+						<input name="prenom" placeholder="prenom" type="text">
+						<input name="mail" placeholder="mail" type="text">
+						<select name="id_role" type="text">
+							<option value="1">administrateur</option>
+							<option value="2">gestionaire</option>
+							<option value="3">professeur</option>
+						</select>
+						<input type="password" name="mdp" placeholder="mot de passe">
+						<button class="submitBtn" value="Créer" type="submit">Ajouter</button>
+						<input type='hidden' name='type_form' value='1'></td>
+					</form>
+				</div>
 					
-				<table>
+				<table id="ListeComptes" class="tablesorter">
+					<thead>
 					<tr>
 						<th>Nom</th>
 						<th>Prénom</th>
@@ -85,14 +101,16 @@ require_once "BDD.php";
 						<th>Editer</th>
 						<th>Supprimer</th>
 					</tr>				
-
+					</thead>
+					
+					<tbody>
 				<?php
 
 					/***************** AFFICHAGE DES COMPTES *********************/
 
 					while($donnees = $req_compte->fetch()){
 
-						 echo "<tr><td>";
+						 echo "<tr class='odd'><td>";
 						 echo htmlspecialchars($donnees['nom']);
 						 echo '</td>';
 						 echo '<td>';
@@ -116,12 +134,13 @@ require_once "BDD.php";
 					}	
 
 					?>
+						</tbody>
 					</table>
-
-
+					
+					
 					<!-- *********** FORMULAIRE AJOUT UTILISATEUR ****************-->
-	
-					<form action='#' method='POST'>
+					
+					<!-- <form action='#' method='POST'>
 						<table>
 							<tr>
 								<th>Nom</th>
@@ -145,8 +164,8 @@ require_once "BDD.php";
 								<input type='hidden' name='type_form' value='1'></td>
 							</tr>
 						</table>
-					</form>	
-			
+					</form>	-->
+					
 					<?php if($ERROR) { ?>
 			
 					<div class="ui-widget">
@@ -164,6 +183,10 @@ require_once "BDD.php";
 			</div>
 		</div>
 	</div>
+	
+	<script>
+		$("#ListeComptes").tablesorter();
+	</script>
 	<?php
 	}
 	
