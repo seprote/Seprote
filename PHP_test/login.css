@@ -7,18 +7,18 @@ body {
   height: 100vh;
 }
 
-.wrap {
+.loginWrap {
   width: inherit;
   text-align: center;
 }
-.seprote {
+.loginSeprote {
   margin: 50px 0 100px 0;
   height: 56px;
   display: inline-block;
 }
-.iut { height: 130px; display: inline-block; }
-.iutCB { height: 86px; display: inline-block; }
-.iutImg { margin-bottom: 125px; }
+.loginIut { height: 130px; display: inline-block; }
+.loginIutCB { height: 86px; display: inline-block; }
+.loginIutImg { margin-bottom: 125px; }
 
 #loginForm {
   width: 25%;
