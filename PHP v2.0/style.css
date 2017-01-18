@@ -1,0 +1,207 @@
+* { margin: 0; padding: 0; }
+body {
+  font-family: 'Product Sans', Arial, sans-serif;
+  background-color: #eee;
+  display: table;
+  width: 100%;
+  height: 100vh;
+}
+body>div {
+  display: table-row;
+  height: 100%;
+}
+
+#header {
+  width: 100%;
+  height: 56px;
+  background-position: center;
+  background: url('src/headerTrans2.png') no-repeat center, linear-gradient(90deg, #dddddd, #dddddd 49.9%, #f5a320 50.1%) no-repeat;
+  text-align: center;
+}
+.wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: inherit;
+  width: inherit;
+  text-align: left;
+}
+.seprote {
+  margin: auto 0;
+  height: 95%;
+  display: inline-block;
+}
+.iutCB {
+  margin: auto 0;
+  height: 95%;
+  display: inline-block;
+}
+
+#menuBar {
+  display: table;
+  height: 50px;
+  min-width: 1000px;
+  margin: 0 auto;
+}
+
+#menuBar ul {
+  height: inherit;
+  text-align: center;
+}
+#menuBar ul li {
+  display: inline-block;
+  height: inherit;
+  line-height: 50px;
+  font-size: 20px;
+}
+.itemName {
+  display: table-cell;
+  padding: 0 20px;
+  vertical-align: middle;
+  text-decoration: none;
+  font-size: 2.25vh;
+  color: #222;
+  transition: color 0.1s linear;
+}
+.itemName:hover {
+  color: #bbb;
+}
+
+/*MAIN*/
+.mainWrap {
+  display: table;
+  width: 100%;
+  height: 100%;
+  background-color: #fafafa;
+  padding: 15px 0;
+}
+.bonjour {
+  display: table-row;
+  width: inherit;
+  height: 40px;
+  text-align: center;
+}
+#content {
+  display: table;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+#left, #right {
+  display: table-cell;
+  width: 50%;
+  vertical-align: middle;
+}
+#chart { display: inline-block; margin-bottom: 10px; }
+.tabBtn, .pieBtn, .barBtn { display: table-cell; }
+
+
+
+ul {list-style-type: none;}
+body {font-family: Verdana, sans-serif;}
+
+
+.calendar { width: 90%; }
+
+/* Year header */
+.Year {
+    padding: 70px 25px;
+    background: #1abc9c;
+}
+
+/* Year list */
+.Year ul {
+    margin: 0;
+    padding: 0;
+}
+
+.Year ul li {
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+/* Previous button inside year header */
+.Year .prev {
+    float: left;
+    padding-top: 10px;
+}
+
+/* Next button */
+.Year .next {
+    float: right;
+    padding-top: 10px;
+}
+
+/* Months (January-December) */
+.Months {
+    margin: 0;
+    padding: 10px 0;
+    background-color:#ddd;
+}
+
+.Months li {
+    display: inline-block;
+    width: 7%;
+	font-size:10px;
+    color: #666;
+    text-align: center;
+}
+
+/* Weeks (1-53) */
+.Week {
+    padding: 10px 0;
+    background: #eee;
+    margin: 0;
+}
+
+.Week li {
+    list-style-type: none;
+    display: inline-block;
+    width: 7%;
+    text-align: center;
+    margin-bottom: 5px;
+    font-size:10px;
+    color:#777;
+}
+
+/* Highlight the "current" week */
+.Week li .active {
+    padding: 5px;
+    background: #1abc9c;
+    color: white !important
+}
+
+
+/*manage accounts*/
+.accInput {
+  width: 60%;
+  margin: 0 auto;
+  background-color: #fff;
+  border: 1px solid #666;
+  padding: 10px 0;
+}
+.accInput input {
+  margin: 0 5px;
+}
+.submitBtn {
+  padding: 3px 7px;
+}
+
+/* ListeComptes */
+#ListeComptes.tablesorter {
+    margin: 20px auto 0 auto;
+    font-size: 8pt;
+    width: 60%;
+}
+
+/*END MAIN*/
+
+footer {
+  display: table;
+  height: 25px;
+  margin-top: 10px;
+}
+.aPropos { margin-left: 10px; }
+.separator { margin: 0 10px; }
