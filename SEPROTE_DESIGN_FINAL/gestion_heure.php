@@ -1,0 +1,67 @@
+<?php
+	session_start();
+	require_once "BDD.php";
+	include('header.php');
+	
+	if(!empty($_SESSION['id'])){ // On est connecter
+	   include('menu.php'); 
+?>
+
+<div id="main">
+    <div class="mainWrap">
+        <div id="content" class="GEST_HEURE">
+            <h2> Gestion des heures </h2>
+
+            <form class="formHour">
+                <label for="module">Choix du module: </label>
+                <select id="mod">
+                    			<?php
+				$req = $bdd->prepare("SELECT * FROM module");
+				$req->execute();
+				while($res = $req->fetch()){
+					echo "<option value='".$res['id_m']."'>".$res['code_m']." : ".$res['nom_m']."</option>";
+				}
+			
+			?>
+                </select>
+                <br/><br/>
+                <label for="prof">Choix du prof: </label>
+                <select id="prof">
+                    <?php
+				$req = $bdd->prepare("SELECT * FROM utilisateur");
+				$req->execute();
+				while($res = $req->fetch()){
+					echo "<option value='".$res['id_u']."'>".$res['nom']." ".$res['prenom']."</option>";
+				}
+			
+			?>
+                </select>
+                <br/><br/><br/>
+                <label for="NBheuresCM">NB heures de CM: </label>
+                <input id="cmm" type="text" min=0 name="cm">
+                <br/><br/>
+                <label for="NBheuresTD">NB heures de TD: </label>
+                <input id="tdd" type="text" min=0 name="td">
+                <br/><br/>
+                <label for="NBheuresTP">NB heures de TP: </label>
+                <input id="tpp" type="text" min=0 name="tp">
+
+                <br/><br/><br/>
+
+                <span>NB heure CM restant: </span><span class="cm">NaN</span><br/><br/>
+                <span>NB heure TD restant: </span><span class="td">NaN</span><br/><br/>
+                <span>NB heure TP restant: </span><span class="tp">NaN</span><br/><br/>
+                <span>Total: </span><span class="total">NaN</span>
+                <br/><br/><br/>
+
+                <button id="butval">Valider</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<?php
+    } else { header('Location: login.php'); }
+    
+	include('footer.php');
+?>
